@@ -2,13 +2,13 @@ from django.db import models
 
 
 
-bad_history = """ssentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lor"""
+mad_history = """ыя ыяыяыяыяя"""
 
 class AboutYou(models.Model):
-    author = models.CharField(verbose_name="enter author this book", max_length=100,default='unknown')
-    day_made = models.IntegerField(verbose_name="when was created this book",default=2000)
-    pages = models.IntegerField(verbose_name="enter how many pages",default=200)
-    jenre = models.TextField(verbose_name="enter jenre",default='romcom')
+    author = models.CharField(verbose_name="Введи автора книги", max_length=100,default='Пусто')
+    day_made = models.IntegerField(verbose_name="Когда написано",default=2000)
+    pages = models.IntegerField(verbose_name="Сколько страниц",default=200)
+    jenre = models.TextField(verbose_name="Жанр",default='роман')
     
     discription = models.TextField(
         verbose_name="enter your moment",
