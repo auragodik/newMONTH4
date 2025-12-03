@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profiles list</title>
+</head>
+<body>
+
+<h1>About You List</h1>
+
+<ul>
+    {% for p in posts %}
+        <li>
+            <a href="{% url 'news_detail' p.id %}">
+                {{ p.author }} — {{ p.created_at }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

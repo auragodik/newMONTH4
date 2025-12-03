@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.author }}</title>
+</head>
+<body>
+
+<h1>{{ post.author }}</h1>
+
+<p><strong>Day of made:</strong> {{ post.day_made }}</p>
+<p><strong>pages:</strong> {{ post.pages }} </p>
+<p><strong>jenres:</strong> {{ post.jenres }} </p>
+<p><strong>Discription:</strong> {{ post.discription }}</p>
+<p><strong>Created:</strong> {{ post.created_at }}</p>
+
+{% if post.photo %}
+    <img src="{{ post.photo.url }}" width="300">
+{% endif %}
+
+<br><br>
+<a href="/news_list/">Back</a>
+
+</body>
+</html>
