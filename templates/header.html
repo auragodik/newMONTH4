@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Книжный мир{% endblock %}</title>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+<header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="/">Книжный мир</a></h1>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/time/">Время</a></li>
+                    <li><a href="/writers/">Авторы</a></li>
+                    <li><a href="/citaty/">Цитаты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
