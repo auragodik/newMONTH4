@@ -1,0 +1,10 @@
+<h1>Все продукты</h1>
+
+<ul>
+    {% for p in products %}
+        <li>
+            {{ p.name }} — {{ p.price }} сом
+            (Категория: {{ p.category.name }})
+        </li>
+    {% endfor %}
+</ul>
