@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Книжный мир{% endblock %}</title>
+    <title>{% block title %}Главная{% endblock %}</title>
 
     <!-- Подключение CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -12,7 +12,7 @@
 <body>
 <header class="main-header">
         <div class="container">
-            <h1 class="logo"><a href="/">Книжный мир</a></h1>
+            <h1 class="logo"><a href="/">Моя приложуха</a></h1>
 
             <nav class="main-nav">
                 <ul>
@@ -20,6 +20,11 @@
                     <li><a href="/time/">Время</a></li>
                     <li><a href="/writers/">Авторы</a></li>
                     <li><a href="/citaty/">Цитаты</a></li>
+                    <li><a href="/shop/categories/">Категории</a> </li>
+                    <li><a href="/shop/products/">Продукты</a> </li>
+                    <li><a href="/shop/categories/<int:category_id>/">Выбранные категории</a> </li>
+
+                    
                 </ul>
             </nav>
         </div>

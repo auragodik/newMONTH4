@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import AboutYou
 
+
 # Register your models here.
 @admin.register(AboutYou)
 class NewsAboutYouAdmin(admin.ModelAdmin):

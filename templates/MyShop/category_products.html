@@ -1,3 +1,7 @@
+{% load static %}
+{% include '../header.html' %}
+
+
 <h1>Продукты категории: {{ category.name }}</h1>
 
 <ul>
@@ -9,3 +13,4 @@
 </ul>
 
 <a href="{% url 'categories' %}">← Назад к категориям</a>
+{% include '../footer.html' %}
