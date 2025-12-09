@@ -1,0 +1,25 @@
+{% load static %}
+{% include '../header.html' %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Книги</title>
+</head>
+<body>
+    <h1>Список книг</h1>
+
+    <a href="{% url 'book_create' %}">Добавить книгу</a>
+
+    <ul>
+        {% for book in books %}
+            <li>
+                <b>{{ book.title }}</b> — {{ book.author }}
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+{% include '../footer.html' %}

@@ -1,18 +1,8 @@
-{% load static %}
-{% include '../header.html' %}
-<h1>{{ post.author }}</h1>
+{% extends "blog/base.html" %}
 
-<p><strong>Day of made:</strong> {{ post.day_made }}</p>
-<p><strong>pages:</strong> {{ post.pages }} </p>
-<p><strong>jenres:</strong> {{ post.jenres }} </p>
-<p><strong>Discription:</strong> {{ post.discription }}</p>
-<p><strong>Created:</strong> {{ post.created_at }}</p>
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p><strong>Автор:</strong> {{ post.author }}</p>
 
-{% if post.photo %}
-    <img src="{{ post.photo.url }}" width="300">
-{% endif %}
-
-<br><br>
-<a href="/news_list/">Back</a>
-
-{% include '../footer.html' %}
+<a href="{% url 'news_list' %}">← Вернуться к списку новостей</a>
+{% endblock %}
