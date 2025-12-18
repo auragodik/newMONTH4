@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from datetime import datetime
 from .models import AboutYou
 
-
+def PassView(request):
+    if request.method == 'GET':
+        return render(request, 'base.html')
 
 def newsPostView(request):
     posts = AboutYou.objects.all()
