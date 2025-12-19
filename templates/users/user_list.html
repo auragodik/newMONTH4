@@ -1,27 +1,28 @@
-{% load static %}
-{% include '../header.html' %}
-
+{% extends "base.html" %}
+{% block title %}Список пользователей{% endblock %}
+{% block content %}
 <h1>Список пользователей</h1>
 
 <ul class="users-list">
     {% for user in users_list %}
-    <li class="user-card">
-        <h3>{{ user.first_name }} {{ user.surname }}</h3>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Пол:</strong> {{ user.gender }}</p>
-        <p><strong>Телефон:</strong> {{ user.phone_number }}</p>
-        <p><strong>Сертификат:</strong> {{ user.certificate }}</p>
-        <p><strong>Город:</strong> {{ user.city }}</p>
-        <p><strong>Уровень английского:</strong> {{ user.english_lvl }}</p>
-        <p><strong>Опыт:</strong> {{ user.experience }}</p>
-        <p><strong>Дата регистрации:</strong> {{ user.date_joined }}</p>
-    </li>
+        <li class="user-card">
+            <h3>{{ user.first_name }} {{ user.surname }}</h3>
+            <p>Email: {{ user.email }}</p>
+            <p>Пол: {{ user.gender }}</p>
+            <p>Телефон: {{ user.phone_number }}</p>
+            <p>Сертификат: {{ user.certificate }}</p>
+            <p>Город: {{ user.city }}</p>
+            <p>Уровень английского: {{ user.english_lvl }}</p>
+            <p>Опыт: {{ user.experience }}</p>
+            <p>Дата регистрации: {{ user.date_joined|date:"d.m.Y H:i" }}</p>
+        </li>
+    {% empty %}
+        <li>Пользователей пока нет</li>
     {% endfor %}
 </ul>
 
-<form action="{% url 'logout' %}" method="POST">
+<form action="{% url 'logout' %}" method="post">
     {% csrf_token %}
-    <button type="submit">Выйти</button>
+    <button type="submit" class="btn">Выйти</button>
 </form>
-
-{% include '../footer.html' %}
+{% endblock %}

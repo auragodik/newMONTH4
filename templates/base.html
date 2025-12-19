@@ -1,47 +1,19 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Моя Приложуха{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f8f8;
-        }
-        main {
-            padding: 20px;
-            min-height: 70vh;
-        }
-        .btn {
-            display: inline-block;
-            padding: 8px 15px;
-            background: #3478f6;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
-        .btn:hover {
-            background: #1f5fd1;
-        }
-    </style>
 </head>
 <body>
-    <!-- HEADER -->
     {% include 'header.html' %}
 
-    <!-- MAIN CONTENT -->
-    <main>
+    <main class="container">
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- FOOTER -->
     {% include 'footer.html' %}
 </body>
 </html>

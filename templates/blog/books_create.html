@@ -1,47 +1,11 @@
-{% load static %}
-{% include '../header.html' %}
+{% extends "base.html" %}
+{% block title %}Добавить книгу{% endblock %}
+{% block content %}
+<h1>Добавить книгу</h1>
 
-
-
-<h2>Добавить книгу</h2>
-
-<form method="post" class="book-form">
+<form method="post">
     {% csrf_token %}
-
-    <label for="title">Название:</label>
-    <input type="text" id="title" name="title" placeholder="Введите название" required>
-
-    <label for="author">Автор:</label>
-    <input type="text" id="author" name="author" placeholder="Введите автора" required>
-
+    {{ form.as_p }}
     <button type="submit">Сохранить</button>
 </form>
-
-<style>
-    .book-form {
-        width: 350px;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    input {
-        padding: 8px;
-        border: 1px solid #bbb;
-        border-radius: 5px;
-    }
-    button {
-        padding: 10px;
-        background: #3478f6;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    button:hover {
-        background: #1f5fd1;
-    }
-</style>
-
-
-{% include '../footer.html'%}
+{% endblock %}

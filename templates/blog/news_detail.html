@@ -1,8 +1,8 @@
-{% extends "blog/base.html" %}
-
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 <h1>{{ post.title }}</h1>
 <p><strong>Автор:</strong> {{ post.author }}</p>
-
+<p>{{ post.content }}</p>
 <a href="{% url 'news_list' %}">← Вернуться к списку новостей</a>
 {% endblock %}

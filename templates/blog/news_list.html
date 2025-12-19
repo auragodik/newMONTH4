@@ -1,16 +1,13 @@
-{% load static %}
-{% include '../header.html' %}
-
-<h1>About You List</h1>
-
-<ul>
-    {% for p in posts %}
-        <li>
-            <a href="{% url 'news_detail' p.id %}">
-                {{ p.author }} — {{ p.created_at }}
-            </a>
+{% extends "base.html" %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+<h1>Новости</h1>
+<ul class="news-list">
+    {% for post in posts %}
+        <li class="news-card">
+            <a href="{% url 'news_detail' post.id %}">{{ post.title }}</a>
+            <p>{{ post.author }} — {{ post.created_at|date:"d.m.Y" }}</p>
         </li>
     {% endfor %}
 </ul>
-
-{% include '../footer.html' %}
+{% endblock %}

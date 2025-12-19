@@ -1,41 +1,20 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Главная{% endblock %}</title>
-
-    <!-- Подключение CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
 <header class="main-header">
-        <div class="container">
-            <h1 class="logo"><a href="/">Моя приложуха</a></h1>
-
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/time/">Время</a></li>
-                    <!-- <li><a href="/writers/">Авторы</a></li>
-                    <li><a href="/citaty/">Цитаты</a></li> -->
-                    <li><a href="/shop/categories/">Категории</a> </li>
-                    <li><a href="/shop/products/">Продукты</a> </li>
-                    <li><a href="/shop/categories/<int:category_id>/">Выбранные категории</a> </li>
-                    <li><a href="/books/create/">Добавить книгу</a> </li>
-                    <li><a href="/books/">Книги</a> </li>
-                    <li><a href="/user/login/">Логин</a> </li>
-                    <!-- <li><a href="/login/">Логин</a> </li> -->
-                    <li><a href="/user/register/">Регистрация</a> </li>
-                    <li><a href="/user/users_list/">Список пользователей</a> </li>
-
-
-
-
-                    
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="container">
+        <h1 class="logo"><a href="/">Моя Приложуха</a></h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/books/">Книги</a></li>
+                <li><a href="/books/create/">Добавить книгу</a></li>
+                <li><a href="/news/">Новости</a></li>
+                <li><a href="/user/login/">Логин</a></li>
+                <li><a href="/user/register/">Регистрация</a></li>
+                <li><a href="/user/users_list/">Список пользователей</a></li>
+                <!-- <li><a href="/shop/categories/">Категории</a></li>
+                <li><a href="/shop/products/">Продукты</a></li> -->
+                <li><a href="/passport/add/">Добавить пасспорт</a></li>
+                <li><a href="passport/success/">Паспорта</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

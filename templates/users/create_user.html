@@ -1,12 +1,10 @@
-{% load static %}
-{% include '../header.html' %}
-
+{% extends "base.html" %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
 <h1>Регистрация</h1>
-
-<form method="POST" enctype="multipart/form-data">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Регистрация</button>
 </form>
-
-{% include '../footer.html' %}
+{% endblock %}

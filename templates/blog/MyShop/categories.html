@@ -1,18 +1,54 @@
 {% load static %}
 {% include '../header.html' %}
 
+<main class="container">
+    <h1 class="page-title">Категории</h1>
 
+    <ul class="categories-list">
+        {% for c in categories %}
+            <li class="category-card">
+                <a href="{% url 'category_products' c.id %}">{{ c.name }}</a>
+            </li>
+        {% empty %}
+            <li>Категорий пока нет</li>
+        {% endfor %}
+    </ul>
+</main>
 
-<h1>Категории</h1>
-
-<ul>
-    {% for c in categories %}
-        <li>
-            <a href="{% url 'category_products' c.id %}">
-                {{ c.name }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+<style>
+    .container {
+        padding: 20px;
+    }
+    .page-title {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #3478f6;
+    }
+    .categories-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        list-style: none;
+        padding: 0;
+        justify-content: center;
+    }
+    .category-card {
+        background: white;
+        border-radius: 8px;
+        padding: 15px 20px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .category-card a {
+        text-decoration: none;
+        color: #3478f6;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .category-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+</style>
 
 {% include '../footer.html' %}
