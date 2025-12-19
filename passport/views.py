@@ -1,20 +1,23 @@
+from django.views import View
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PassportForm
+from .models import Passport
 
-@login_required
-def add_passport(request):
-    if hasattr(request.user, 'passport'):
-        return render(request, 'passport/already_exists.html')
+class AddPassportView(LoginRequiredMixin, View):
+    def get(self, request):
+        if Passport.objects.filter(user=request.user).exists():
+            return render(request, 'passport/already_exists.html')
+        form = PassportForm()
+        return render(request, 'passport/add_passport.html', {'form': form})
 
-    if request.method == 'POST':
+    def post(self, request):
+        if Passport.objects.filter(user=request.user).exists():
+            return render(request, 'passport/already_exists.html')
         form = PassportForm(request.POST)
         if form.is_valid():
             passport = form.save(commit=False)
             passport.user = request.user
             passport.save()
             return redirect('passport_success')
-    else:
-        form = PassportForm()
-
-    return render(request, 'passport/add_passport.html', {'form': form})
+        return render(request, 'passport/add_passport.html', {'form': form})
