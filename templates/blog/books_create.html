@@ -5,7 +5,12 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <p>
+        <input type="text" name="title" placeholder="Название книги" required>
+    </p>
+    <p>
+        <input type="text" name="author" placeholder="Автор" required>
+    </p>
     <button type="submit">Сохранить</button>
 </form>
 {% endblock %}

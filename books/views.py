@@ -4,27 +4,24 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
 from .models import AboutYou
-from .forms import BookSearchForm
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django import forms
 
 class PassView(View):
     def get(self, request):
         return render(request, 'base.html')
-
 
 class NewsPostView(ListView):
     model = AboutYou
     template_name = 'blog/news_list.html'
     context_object_name = 'posts'
 
-
 class PostDetailView(DetailView):
     model = AboutYou
     template_name = 'blog/news_detail.html'
     pk_url_kwarg = 'id'
     context_object_name = 'post'
-
 
 class WritersView(View):
     def get(self, request):
@@ -33,7 +30,6 @@ class WritersView(View):
             "Джейн Остин, Эрнест Хеммингуэй, Агата Кристи, А. С. Пушкин, "
             "Чынгыз Айтматов, Федор Достоевский"
         )
-
 
 class QuotesView(View):
     def get(self, request):
@@ -46,11 +42,9 @@ class QuotesView(View):
         ]
         return HttpResponse("<h1>Цитаты</h1>" + "<br>".join(quotes))
 
-
 class CurrentTimeView(View):
     def get(self, request):
         return HttpResponse(f'Время - {datetime.now()}')
-
 
 class BookListView(View):
     def get(self, request):
@@ -59,7 +53,7 @@ class BookListView(View):
         if form.is_valid():
             query = form.cleaned_data.get('query')
             if query:
-                books = AboutYou.objects.filter(
+                books = books.filter(
                     Q(title__icontains=query) | Q(author__icontains=query)
                 )
 
@@ -72,7 +66,6 @@ class BookListView(View):
             'form': form
         })
 
-
 class BookCreateView(View):
     def get(self, request):
         return render(request, 'blog/books_create.html')
@@ -80,5 +73,16 @@ class BookCreateView(View):
     def post(self, request):
         title = request.POST.get('title')
         author = request.POST.get('author')
+
+        if not title or not author:
+            return HttpResponse('Заполните все поля', status=400)
+
         AboutYou.objects.create(title=title, author=author)
         return redirect('book_list')
+
+class BookSearchForm(forms.Form):
+    query = forms.CharField(
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Введите название или автора'})
+    )
